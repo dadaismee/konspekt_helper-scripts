@@ -2,9 +2,9 @@
 
 # Function to display a message and wait for user input
 function confirm_uninstallation() {
-  read -p "$1 (y/n) " -n 1 -r
+  read -p "$1 Нажмите Enter, чтобы продолжить, или Esc, чтобы отменить: " -s -n 1 key
   echo
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
+  if [ "$key" = "" ]; then
     return 0
   else
     return 1
@@ -12,7 +12,7 @@ function confirm_uninstallation() {
 }
 
 # Check if the user wants to proceed with the uninstallation
-confirm_uninstallation "Привет! 🙌 Это скрипт-помощник «Конспекта», который удалит приложения Tectonic и Pandoc, установленные через Homebrew. Вы хотите продолжить?"
+confirm_uninstallation "Привет! 🙌 Это скрипт-помощник «Конспекта», который удалит приложения Tectonic и Pandoc, установленные через Homebrew."
 if [ $? -ne 0 ]; then
   echo "Вы отменили удаление (︶︹︶)"
   exit 1
@@ -41,3 +41,4 @@ else
 fi
 
 echo "Tectonic и Pandoc успешно удалены. 🙃"
+
