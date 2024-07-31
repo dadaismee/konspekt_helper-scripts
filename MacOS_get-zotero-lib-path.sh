@@ -2,6 +2,7 @@
 
 # Search for .json files in the parent directory
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+pwd
 json_files=($(find ../ -maxdepth 1 -type f -name "*.json" 2>/dev/null))
 
 # function confirm_installation() {
